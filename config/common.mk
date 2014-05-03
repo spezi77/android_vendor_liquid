@@ -13,9 +13,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enterprise_mode=1 \
     ro.com.android.dataroaming=false
 
-# properties
+# Disable selinux
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1 \
+    ro.build.selinux=0 \
     persist.sys.root_access=3
 
 # Tether for all
@@ -34,7 +34,6 @@ PRODUCT_PACKAGES += \
     
 # Cm Related Apps
 PRODUCT_PACKAGES += \
-    Apollo \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
@@ -54,7 +53,6 @@ PRODUCT_PACKAGES += \
     LiquidPapers \
     LiquidFileManager \
     LiquidStats \
-    OTAUpdateCenter \
     KernelTweaker 
 
 # superuser

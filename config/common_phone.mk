@@ -4,6 +4,12 @@ include frameworks/base/data/sounds/AllAudio.mk
 # common
 $(call inherit-product, vendor/liquid/config/common.mk)
 
+# Bring in Evervolv a2sd and init.d scripts
+include vendor/liquid/products/tools.mk
+
+# Libs for gesture typing
+include vendor/liquid/products/keyboard.mk
+
 # packages
 PRODUCT_PACKAGES += \
   Mms \
@@ -16,9 +22,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.alarm_alert=Cesium.ogg
 
 # media
-ifeq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
-    PRODUCT_BOOTANIMATION := vendor/liquid/prebuilt/common/bootanimation/720.zip:system/media/bootanimation.zip
-endif
+PRODUCT_BOOTANIMATION := vendor/liquid/prebuilt/common/bootanimation/480.zip:system/media/bootanimation.zip
 
 $(call inherit-product, vendor/liquid/config/telephony.mk)
 

@@ -59,3 +59,4 @@ add_lunch_combo liquid_umts_spyder-userdebug
 add_lunch_combo liquid_v500-userdebug
 add_lunch_combo liquid_vs980-userdebug
 add_lunch_combo liquid_yuga-userdebug
+add_lunch_combo liquid_bravo-userdebug
