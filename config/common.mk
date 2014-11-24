@@ -18,67 +18,62 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=0 \
     persist.sys.root_access=3
 
+ifeq ($(RELEASE),true)
+# Disable multithreaded dexopt by default
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.dalvik.multithread=false
+endif
+
+# Theme engine
+include vendor/liquid/config/themes_common.mk
+
 # Tether for all
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.dun.override=0
 
-# Wallpapers
+# Stagefright FFMPEG plugin
 PRODUCT_PACKAGES += \
-    Basic \
-    Galaxy4 \
-    HoloSpiralWallpaper \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    NoiseField \
-    PhaseBeam \
-    PhotoTable 
-    
-# Cm Related Apps
-PRODUCT_PACKAGES += \
-    DSPManager \
-    libcyanogen-dsp \
-    audio_effects.conf \
-    SoundRecorder \
-    libemoji \
-    Torch \
-    LockClock \
-    BluetoothExt
+    libstagefright_soft_ffmpegadec \
+    libstagefright_soft_ffmpegvdec \
+    libFFmpegExtractor \
+    libnamparser
 
-# Liquid, Slim, Omni Apps
+# Core Apps
 PRODUCT_PACKAGES += \
+    audio_effects.conf \
+    BluetoothExt \
+    Calendar \
+    CellBroadcastReceiver \
+    LatinIME \
+    libemoji \
+    LiveWallpapersPicker \
+    LockClock \
+    SoundRecorder
+
+# Extras for Liquid
+PRODUCT_PACKAGES += \
+    Apollo \
     DashClock \
     DeskClock \
-    Calendar \
-    LatinIME \
-    OmniSwitch \
-    LiquidPapers \
+    KernelTweaker \
     LiquidFileManager \
-    LiquidStats \
-    KernelTweaker 
+    LiquidLauncher \
+    LiquidPapers \
+    LiquidStats
 
 # superuser
 SUPERUSER_EMBEDDED := true
 
 PRODUCT_PACKAGES += \
-    Superuser \
-    su
+    su \
+    Superuser
+
+# Viper4Android
+PRODUCT_COPY_FILES += \
+    vendor/liquid/prebuilt/common/etc/viper/ViPER4Android.apk:system/app/ViPER4Android.apk
 
 PRODUCT_COPY_FILES += \
     external/koush/Superuser/init.superuser.rc:root/init.superuser.rc
 
-# telephony
-PRODUCT_PACKAGES += \
-    CellBroadcastReceiver
-	
-# Inspire Launcher
-PRODUCT_COPY_FILES += \
-    vendor/liquid/prebuilt/common/app/inspirelauncher.apk:system/app/inspirelauncher.apk \
-
-# themes
-PRODUCT_PACKAGES += \
-    ThemeManager \
-    ThemeChooser \
-    com.tmobile.themes
-    
 # Screen recorder
 PRODUCT_PACKAGES += \
     ScreenRecorder \
@@ -92,6 +87,9 @@ PRODUCT_PACKAGES += \
     mount.exfat \
     fsck.exfat \
     mkfs.exfat \
+    mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs \
     ntfsfix \
     ntfs-3g \
     sqlite3
@@ -107,6 +105,7 @@ PRODUCT_COPY_FILES += \
     vendor/liquid/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
     vendor/liquid/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
     vendor/liquid/prebuilt/common/bin/50-liquid.sh:system/addon.d/50-liquid.sh \
+    vendor/liquid/prebuilt/common/bin/90-xposed.sh:system/addon.d/90-xposed.sh \
     vendor/liquid/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 
 # bin
@@ -142,14 +141,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
-# themes
-PRODUCT_COPY_FILES += \
-    vendor/liquid/config/permissions/com.tmobile.software.themes.xml:system/etc/permissions/com.tmobile.software.themes.xml
-
 # version
 RELEASE = false
 LIQUID_VERSION_MAJOR = 3
-LIQUID_VERSION_MINOR = 0
+LIQUID_VERSION_MINOR = 2
 
 # release
 ifeq ($(RELEASE),true)
@@ -160,18 +155,31 @@ else
     LIQUID_VERSION := LS-KK-v$(LIQUID_VERSION_MAJOR).$(LIQUID_VERSION_MINOR)-$(LIQUID_VERSION_STATE)
 endif
 
+# CM Hardware Abstraction Framework
+PRODUCT_PACKAGES += \
+    org.cyanogenmod.hardware \
+    org.cyanogenmod.hardware.xml
+
+# HFM Files
+PRODUCT_COPY_FILES += \
+	vendor/liquid/prebuilt/etc/hosts.alt:system/etc/hosts.alt \
+	vendor/liquid/prebuilt/etc/hosts.og:system/etc/hosts.og
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.liquid.version=$(LIQUID_VERSION)
-    
+
 # statistics identity
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.romstats.url=http://www.drdevs.com/stats/liquid/ \
+    ro.romstats.url=http://stats.liquidsmooth.net/ \
     ro.romstats.name=LiquidSmooth \
     ro.romstats.version=$(LIQUID_VERSION) \
     ro.romstats.askfirst=0 \
     ro.romstats.tframe=1
-    
-# OTA
-PRODUCT_PROPERTY_OVERRIDES += \
-    otaupdater.otatime=$(shell date +%Y%m%d)-0001 \
-    otaupdater.otaver=3.0-$(shell date +%Y%m%d)
+
+ifeq ($(USE_PREBUILT_CHROMIUM),1)
+ifeq ($(PRODUCT_PREBUILT_WEBVIEWCHROMIUM),yes)
+
+$(call inherit-product-if-exists, prebuilts/chromium/$(TARGET_DEVICE)/chromium_prebuilt.mk)
+
+endif
+endif
