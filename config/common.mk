@@ -68,16 +68,16 @@ PRODUCT_PACKAGES += \
     Superuser
 
 # Viper4Android
-PRODUCT_COPY_FILES += \
-    vendor/liquid/prebuilt/common/etc/viper/ViPER4Android.apk:system/app/ViPER4Android.apk
+#PRODUCT_COPY_FILES += \
+#    vendor/liquid/prebuilt/common/etc/viper/ViPER4Android.apk:system/app/ViPER4Android.apk
 
 PRODUCT_COPY_FILES += \
     external/koush/Superuser/init.superuser.rc:root/init.superuser.rc
 
 # Screen recorder
-PRODUCT_PACKAGES += \
-    ScreenRecorder \
-    libscreenrecorder
+#PRODUCT_PACKAGES += \
+#    ScreenRecorder \
+#    libscreenrecorder
 
 # system
 PRODUCT_PACKAGES += \
