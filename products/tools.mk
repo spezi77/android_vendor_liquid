@@ -13,3 +13,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/xbin/zipalign:system/xbin/zipalign \
     $(LOCAL_PATH)/etc/init.d/10apps2sd-redux:system/etc/init.d/10apps2sd
 
+# Android Terminal Emulator
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/lib/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so \
+    $(LOCAL_PATH)/etc/jackpal/Term.apk:system/app/Term.apk
