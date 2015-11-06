@@ -15,5 +15,6 @@ PRODUCT_COPY_FILES += \
 
 # Android Terminal Emulator
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/lib/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so \
+    $(LOCAL_PATH)/lib/libjackpal-androidterm5.so:system/lib/libjackpal-androidterm5.so \
+    $(LOCAL_PATH)/lib/libjackpal-termexec2.so:system/lib/libjackpal-termexec2.so \
     $(LOCAL_PATH)/etc/jackpal/Term.apk:system/app/Term.apk
