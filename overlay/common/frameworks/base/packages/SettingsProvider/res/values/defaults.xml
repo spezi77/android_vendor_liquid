@@ -17,5 +17,8 @@
  */
 -->
 <resources>
+    <fraction name="def_window_animation_scale">25%</fraction>
+    <fraction name="def_window_transition_scale">25%</fraction>
+    <fraction name="def_animator_duration_scale">25%</fraction>
     <string name="def_backup_transport">com.google.android.backup/.BackupTransportService</string>
 </resources>
