@@ -18,3 +18,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lib/libjackpal-androidterm5.so:system/lib/libjackpal-androidterm5.so \
     $(LOCAL_PATH)/lib/libjackpal-termexec2.so:system/lib/libjackpal-termexec2.so \
     $(LOCAL_PATH)/etc/jackpal/Term.apk:system/app/Term.apk
+
+# LowSoundFixer (credits tytung)
+PRODUCT_COPY_FILES += \
+    vendor/liquid/prebuilt/apk/LowSoundFixer.apk:system/app/LowSoundFixer.apk
