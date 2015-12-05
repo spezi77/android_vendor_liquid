@@ -52,7 +52,7 @@ PRODUCT_PACKAGES += \
 # Extras for Liquid
 PRODUCT_PACKAGES += \
     Apollo \
-    DashClock \
+#    DashClock \
     DeskClock \
     KernelTweaker \
     LiquidFileManager \
