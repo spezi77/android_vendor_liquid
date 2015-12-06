@@ -41,18 +41,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio_effects.conf \
     BluetoothExt \
-    Calendar \
     CellBroadcastReceiver \
     LatinIME \
     libemoji \
-    LiveWallpapersPicker \
     LockClock \
     SoundRecorder
 
 # Extras for Liquid
 PRODUCT_PACKAGES += \
-    Apollo \
-#    DashClock \
     DeskClock \
     KernelTweaker \
     LiquidFileManager \
@@ -67,17 +63,8 @@ PRODUCT_PACKAGES += \
     su \
     Superuser
 
-# Viper4Android
-#PRODUCT_COPY_FILES += \
-#    vendor/liquid/prebuilt/common/etc/viper/ViPER4Android.apk:system/app/ViPER4Android.apk
-
 PRODUCT_COPY_FILES += \
     external/koush/Superuser/init.superuser.rc:root/init.superuser.rc
-
-# Screen recorder
-#PRODUCT_PACKAGES += \
-#    ScreenRecorder \
-#    libscreenrecorder
 
 # system
 PRODUCT_PACKAGES += \
