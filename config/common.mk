@@ -50,11 +50,14 @@ PRODUCT_PACKAGES += \
 # Extras for Liquid
 PRODUCT_PACKAGES += \
     DeskClock \
-    KernelTweaker \
+    KernelAdiutor \
     LiquidFileManager \
     LiquidLauncher \
     LiquidPapers \
     LiquidStats
+
+PRODUCT_COPY_FILES += \
+    vendor/liquid/proprietary/KernelAdiutor.apk:system/priv-app/KernelAdiutor.apk
 
 # superuser
 SUPERUSER_EMBEDDED := true
