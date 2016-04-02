@@ -41,7 +41,7 @@ fi
 
 OPTICHARGER=$ANDROID_BUILD_TOP/vendor/liquid/tools/opticharger
 QUIET=-q
-DELETE_APPS="Stk.apk PicoTts.apk"
+DELETE_APPS="PicoTts.apk"
 DELETE_BINS="applypatch applypatch_static check_prereq recovery updater"
 DELETE_LIBS="libc_malloc_debug_leak.so libc_malloc_debug_qemu.so libttscompat.so libttspico.so"
 DELETE_FONTS="MTLmr3m.ttf NanumGothic.ttf DroidSansFallback.ttf Padauk-book.ttf Padauk-bookbold.ttf"
